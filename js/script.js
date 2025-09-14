@@ -11,6 +11,18 @@ const input = document.querySelector('.input__search');
 
 const buttonPrev = document.querySelector('.btn-prev');
 const buttonNext = document.querySelector('.btn-next');
+const button1 = document.querySelector('.btn-1')
+const button2 = document.querySelector('.btn-2')
+
+const barra1 = document.querySelector('.barras_1')
+const barra2 = document.querySelector('.barras_2')
+
+const ataque = document.querySelector('.atk')
+const defesa = document.querySelector('.def')
+const vida = document.querySelector('.hp')
+const sAtaque = document.querySelector('.s_atk')
+const sDefesa = document.querySelector('.s_def')
+const speed = document.querySelector('.speed')
 
 let searchPokemon = 1;
 
@@ -29,7 +41,7 @@ const cortexto = (texto,tipo) => {
     else if (tipo == 'dragon'){
         texto.style.color = '#fff';
         texto.style.background = '#ec1f1fff'
-        texto.style.boxShadow = 'inset 0px 18px #214cc2ff' ;
+        texto.style.boxShadow = 'inset 0px 10px #214cc2ff' ;
     }
     else if (tipo == 'electric'){
         texto.style.color = '#000';
@@ -53,7 +65,7 @@ const cortexto = (texto,tipo) => {
     else if (tipo == 'flying'){
         texto.style.color = '#000';
         texto.style.background = '#8b8d94ff'
-        texto.style.boxShadow = 'inset 0px 18px #245bffff' ;
+        texto.style.boxShadow = 'inset 0px 10px #245bffff' ;
     }
     else if (tipo == 'ghost'){
         texto.style.boxShadow = 'inset 0px 0px #da9500ff' ;
@@ -67,7 +79,7 @@ const cortexto = (texto,tipo) => {
     else if (tipo == 'ground'){
         texto.style.color = '#000';
         texto.style.background = '#6d4700ff'
-        texto.style.boxShadow = 'inset 0px 18px #da9500ff' ;
+        texto.style.boxShadow = 'inset 0px 10px #da9500ff' ;
     }
     else if (tipo == 'ice'){
         texto.style.color = '#000';
@@ -126,6 +138,13 @@ const renderPokemon =async (pokemon) => {
         pokemonType2.style.display = 'inline';
         segundoTexto.style.display = 'inline';
 
+        ataque.style.width = `${data['stats']['1']['base_stat'] * 0.392}%`
+        vida.style.width = `${data['stats']['0']['base_stat'] * 0.392}%`
+        defesa.style.width = `${data['stats']['2']['base_stat'] * 0.392}%`
+        sAtaque.style.width = `${data['stats']['3']['base_stat'] * 0.392}%`
+        sDefesa.style.width = `${data['stats']['4']['base_stat'] * 0.392}%`
+        speed.style.width = `${data['stats']['5']['base_stat'] * 0.392}%`
+
         pokemonName.innerHTML = data.name;
         pokemonId.innerHTML = data.id;
         pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
@@ -182,5 +201,16 @@ buttonPrev.addEventListener('click', ()=> {
         renderPokemon(searchPokemon)
     }
 });
+
+button1.addEventListener('click',()=>{
+    barra1.style.display = 'inline';
+    barra2.style.display = 'none';
+});
+
+button2.addEventListener('click',()=>{
+    barra1.style.display = 'none';
+    barra2.style.display = 'inline';
+});
+
 
 renderPokemon(searchPokemon)
