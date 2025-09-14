@@ -125,6 +125,20 @@ const fetchPokemon = async (pokemon) => {
     }
 
 }
+const desBarras = (data) => {
+    ataque.style.width = `${data['stats']['1']['base_stat'] * 0.392}%`
+    ataque.innerHTML = `ATK=${data['stats']['1']['base_stat']}`;
+    vida.style.width = `${data['stats']['0']['base_stat'] * 0.392}%`;
+    vida.innerHTML = `HP=${data['stats']['0']['base_stat']}`;
+    defesa.style.width = `${data['stats']['2']['base_stat'] * 0.392}%`;
+    defesa.innerHTML = `DEF=${data['stats']['2']['base_stat']}`;
+    sAtaque.style.width = `${data['stats']['3']['base_stat'] * 0.392}%`;
+    sAtaque.innerHTML = `S.ATK=${data['stats']['3']['base_stat']}`;
+    sDefesa.style.width = `${data['stats']['4']['base_stat'] * 0.392}%`;
+    sDefesa.innerHTML = `S.DEF=${data['stats']['4']['base_stat']}`;
+    speed.style.width = `${data['stats']['5']['base_stat'] * 0.392}%`;
+    speed.innerHTML = `SPEED=${data['stats']['5']['base_stat']}`;
+}
 
 const renderPokemon =async (pokemon) => {
 
@@ -138,12 +152,7 @@ const renderPokemon =async (pokemon) => {
         pokemonType2.style.display = 'inline';
         segundoTexto.style.display = 'inline';
 
-        ataque.style.width = `${data['stats']['1']['base_stat'] * 0.392}%`
-        vida.style.width = `${data['stats']['0']['base_stat'] * 0.392}%`
-        defesa.style.width = `${data['stats']['2']['base_stat'] * 0.392}%`
-        sAtaque.style.width = `${data['stats']['3']['base_stat'] * 0.392}%`
-        sDefesa.style.width = `${data['stats']['4']['base_stat'] * 0.392}%`
-        speed.style.width = `${data['stats']['5']['base_stat'] * 0.392}%`
+        desBarras(data)
 
         pokemonName.innerHTML = data.name;
         pokemonId.innerHTML = data.id;
